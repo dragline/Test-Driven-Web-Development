@@ -44,7 +44,7 @@ class NewVistorTest(LiveServerTestCase):
         # a to-do list table
         inputbox.send_keys(Keys.ENTER)
         edith_list_url = self.browser.current_url
-        self.assertRegext(edith_list_url, '/lists/.+')
+        self.assertRegex(edith_list_url, '/lists/.+')
         self.check_for_row_in_list_table('1: Buy peacock feathers')
         #self.assertTrue(any(row.text == '1: Buy peacock feathers' for row in rows),
         #                "New to-do item did not appear in table its text was: \n%s" % (table.text,))
@@ -71,7 +71,7 @@ class NewVistorTest(LiveServerTestCase):
         
         # Francis visits the home page. There is no sign of Edith's list
         self.browser.get(self.live_server_url)
-        page_text = self.browser.find_element_by_tage_name('body').text
+        page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertNotIn('make a fly', page_text)
         
